@@ -10,10 +10,10 @@ CREATE TABLE IF NOT EXISTS Artist (
 );
 		
 
-CREATE TABLE IF NOT EXISTS Artist-Genre (
+CREATE TABLE IF NOT EXISTS ArtistGenre (
 		genre_id INTEGER NOT NULL REFERENCES Genre(id),
-		artist_id INTEGER NOT NULL REFERENCES Artist(id)
-		UNIQUE(genre_id, artists_id),
+		artist_id INTEGER NOT NULL REFERENCES Artist(id),
+		UNIQUE(genre_id, artist_id)
 );
 
 
@@ -24,10 +24,10 @@ CREATE TABLE IF NOT EXISTS Album (
 );
 
 
-CREATE TABLE IF NOT EXISTS Artists-Album (
+CREATE TABLE IF NOT EXISTS ArtistsAlbum (
 		album_id INTEGER NOT NULL REFERENCES Album(id),
-		artist_id INTEGER NOT NULL REFERENCES Artist(id)
-		UNIQUE(album_id, artist_id),
+		artist_id INTEGER NOT NULL REFERENCES Artist(id),
+		UNIQUE(album_id, artist_id)
 );
 
 CREATE TABLE IF NOT EXISTS Track (
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS Collection (
 		year INTEGER NOT NULL
 );
 		
-CREATE TABLE IF NOT EXISTS Collection-Track (
+CREATE TABLE IF NOT EXISTS CollectionTrack (
 		collection_id INTEGER NOT NULL REFERENCES Collection(id),
 		track_id INTEGER NOT NULL REFERENCES Track(id),
 		UNIQUE(collection_id, track_id)
